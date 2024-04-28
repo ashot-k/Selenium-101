@@ -10,7 +10,8 @@ import org.testng.annotations.BeforeTest;
 
 public class TestBase {
     public WebDriver driver;
-    private String geckoLocation = "drivers/geckodriver.exe";
+    //using geckodriver instead of geckodriver because of linux
+    private String geckoLocation = "drivers/geckodriver";
 
     @BeforeMethod
     public void Setup() throws Exception {

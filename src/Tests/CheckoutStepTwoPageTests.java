@@ -16,8 +16,10 @@ public class CheckoutStepTwoPageTests extends TestBase{
 
     private String postalCode = "54321";
 
-    private double expectedPrice = 86.38;
+    private double expectedTotalPrice = 86.38;
 
+    private double expectedPrice1 = 29.99;
+    private double expectedPrice2 = 49.99;
     @Test
     public void checkoutStepTwoValidateProductPrices(){
         Log.info("Start Test Case: checkoutStepTwoValidateProductPrices");
@@ -33,7 +35,7 @@ public class CheckoutStepTwoPageTests extends TestBase{
         checkoutStepOnePage.enterInfoAndContinue(name, lastName, postalCode);
         checkoutStepOnePage.goToStepTwo();
         CheckoutStepTwoPage checkoutStepTwoPage = new CheckoutStepTwoPage(driver);
-        checkoutStepTwoPage.verifyProductPrices(29.99, 49.99);
+        checkoutStepTwoPage.verifyProductPrices(expectedPrice1, expectedPrice2);
     }
     @Test
     public void checkoutStepTwoValidateTotalPrice(){
@@ -50,6 +52,6 @@ public class CheckoutStepTwoPageTests extends TestBase{
         checkoutStepOnePage.enterInfoAndContinue(name, lastName, postalCode);
         checkoutStepOnePage.goToStepTwo();
         CheckoutStepTwoPage checkoutStepTwoPage = new CheckoutStepTwoPage(driver);
-        checkoutStepTwoPage.verifyTotalPrice(expectedPrice);
+        checkoutStepTwoPage.verifyTotalPrice(expectedTotalPrice);
     }
 }

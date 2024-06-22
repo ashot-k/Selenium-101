@@ -7,10 +7,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
-import java.text.DecimalFormat;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
-import static java.lang.Math.round;
 
 public class CheckoutStepTwoPage extends BasePage {
     public CheckoutStepTwoPage(WebDriver driver) {
@@ -18,32 +18,46 @@ public class CheckoutStepTwoPage extends BasePage {
     }
     public String checkoutStepTwoUrl = "https://www.saucedemo.com/checkout-step-two.html";
 
-    @FindBy(className = "inventory_item_price")
-    public List<WebElement> elements;
+    @FindBy(className = "cart_item")
+    public List<WebElement> items;
 
     @FindBy(xpath = "//div[@data-test='total-label']")
     private WebElement totalPrice;
 
-    public void verifyTotalPrice(double expectedTotal){
-        double total = Double.parseDouble(totalPrice.getText().substring((8)));
+    @FindBy(xpath = "//div[@data-test='tax-label']")
+    private WebElement tax;
 
-       /* double total = 0f;
-        double tax = Double.parseDouble(taxPrice.getText().substring(6));
-        for(WebElement price: elements){
-            System.out.println(price.getText());
-            total += Double.parseDouble(price.getText().substring(1));
+
+    public List<BigDecimal> getPrices(List<WebElement> items){
+        List<BigDecimal> itemPrices = new ArrayList<>();
+        for (WebElement item: items){
+            WebElement itemPrice = item.findElement(By.xpath(".//div[@data-test='inventory-item-price']"));
+            itemPrices.add(new BigDecimal(itemPrice.getText().substring(1)));
         }
-        total += tax;*/
+        return itemPrices;
+    }
 
+    public void verifyTotalPrice(BigDecimal expectedTotal){
+        List<BigDecimal> itemPrices = new ArrayList<>(getPrices(items));
+        BigDecimal total = new BigDecimal("0");
+        for (BigDecimal price: itemPrices){
+            total = total.add(price);
+        }
+        BigDecimal taxPrice = new BigDecimal(tax.getText().substring(tax.getText().lastIndexOf("$") + 1));
+        total = total.add(taxPrice);
         Assert.assertEquals(total, expectedTotal);
     }
 
-    public void verifyProductPrices(double expected1, double expected2){
-        double price1 = Double.parseDouble(elements.get(0).getText().substring(1));
-        double price2 = Double.parseDouble(elements.get(1).getText().substring(1));
+    public void verifyTotalItems(int expectedNumberOfItems){
+        Assert.assertEquals(items.size(), expectedNumberOfItems);
+    }
+
+    public void verifyProductPrices(BigDecimal expected1, BigDecimal expected2){
+        BigDecimal price1 = new BigDecimal(items.get(0).findElement(By.xpath(".//div[@data-test='inventory-item-price']")).getText().substring(1));
+        BigDecimal price2 = new BigDecimal(items.get(1).findElement(By.xpath(".//div[@data-test='inventory-item-price']")).getText().substring(1));
 
         Assert.assertEquals(price1, expected1);
-        Assert.assertEquals(price2,expected2);
+        Assert.assertEquals(price2, expected2);
     }
 
 }

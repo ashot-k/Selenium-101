@@ -15,8 +15,8 @@ public class CheckoutStepOnePageTests extends TestBase{
 
     private String emptyPostalCode = "";
     @Test
-    public void checkoutStepOneErrorValidationTest(){
-        Log.info("Start Test Case: checkoutStepOneErrorValidation");
+    public void TestWrongInfoInputErrorValidation(){
+        Log.info("Start Test Case: WrongInfoInputErrorValidation");
         LoginPage loginPage =  new LoginPage(driver);
         loginPage.Login(validUserName, validPassword);
         InventoryPage inventoryPage = new InventoryPage(driver);

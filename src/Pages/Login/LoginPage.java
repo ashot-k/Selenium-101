@@ -21,6 +21,10 @@ public class LoginPage extends BasePage {
     private WebElement loginButton;
     @FindBy(css = "h3[data-test='error']")
     private WebElement errorMessage;
+    @FindBy(id = "react-burger-menu-btn")
+    private WebElement sideBar;
+    @FindBy(id= "logout_sidebar_link")
+    private WebElement logoutBtn;
 
     public void Login(String userName, String password) {
         driver.get(loginPageUrl);
@@ -38,5 +42,10 @@ public class LoginPage extends BasePage {
     public void VerifyErrorMessageText(String expectedErrorMessage) {
         String actualErrorMessage = errorMessage.getText();
         Assert.assertEquals(actualErrorMessage, expectedErrorMessage, "Error message text does not match.");
+    }
+
+    public void logout() {
+        sideBar.click();
+        logoutBtn.click();
     }
 }

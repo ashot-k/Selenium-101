@@ -8,22 +8,43 @@ import Pages.Login.LoginPage;
 import Utils.Log;
 import org.testng.annotations.Test;
 
-public class CheckoutStepTwoPageTests extends TestBase{
+import java.math.BigDecimal;
+
+public class CheckoutStepTwoPageTests extends TestBase {
     private String validUserName = "standard_user";
     private String validPassword = "secret_sauce";
     private String name = "john";
     private String lastName = "jones";
-
     private String postalCode = "54321";
 
-    private double expectedTotalPrice = 86.38;
-
-    private double expectedPrice1 = 29.99;
-    private double expectedPrice2 = 49.99;
     @Test
-    public void checkoutStepTwoValidateProductPrices(){
-        Log.info("Start Test Case: checkoutStepTwoValidateProductPrices");
-        LoginPage loginPage =  new LoginPage(driver);
+    public void TestVerifyTotalItems() {
+        int expectedNumberOfItems = 3;
+        Log.info("Start Test Case: TestVerifyTotalItems");
+
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.Login(validUserName, validPassword);
+        InventoryPage inventoryPage = new InventoryPage(driver);
+        inventoryPage.addBackpackToCart();
+        inventoryPage.addFleeceJacketToCart();
+        inventoryPage.addBikeLightToCart();
+        inventoryPage.goToCartPage();
+        CartPage cartPage = new CartPage(driver);
+        cartPage.goToCheckout();
+        CheckoutStepOnePage checkoutStepOnePage = new CheckoutStepOnePage(driver);
+        checkoutStepOnePage.enterInfoAndContinue(name, lastName, postalCode);
+        checkoutStepOnePage.goToStepTwo();
+        CheckoutStepTwoPage checkoutStepTwoPage = new CheckoutStepTwoPage(driver);
+        checkoutStepTwoPage.verifyTotalItems(expectedNumberOfItems);
+    }
+
+    @Test
+    public void TestValidateProductPrices() {
+        BigDecimal expectedPrice1 = new BigDecimal("29.99");
+        BigDecimal expectedPrice2 = new BigDecimal("49.99");
+        Log.info("Start Test Case: TestValidateProductPrices");
+
+        LoginPage loginPage = new LoginPage(driver);
         loginPage.Login(validUserName, validPassword);
         InventoryPage inventoryPage = new InventoryPage(driver);
         inventoryPage.addBackpackToCart();
@@ -37,10 +58,14 @@ public class CheckoutStepTwoPageTests extends TestBase{
         CheckoutStepTwoPage checkoutStepTwoPage = new CheckoutStepTwoPage(driver);
         checkoutStepTwoPage.verifyProductPrices(expectedPrice1, expectedPrice2);
     }
+
+
     @Test
-    public void checkoutStepTwoValidateTotalPrice(){
-        Log.info("Start Test Case: checkoutStepTwoValidateTotalPrice");
-        LoginPage loginPage =  new LoginPage(driver);
+    public void TestValidateTotalPrice() {
+        BigDecimal expectedTotalPrice = new BigDecimal("86.38");
+        Log.info("Start Test Case: TestValidateTotalPrice");
+
+        LoginPage loginPage = new LoginPage(driver);
         loginPage.Login(validUserName, validPassword);
         InventoryPage inventoryPage = new InventoryPage(driver);
         inventoryPage.addBackpackToCart();

@@ -15,7 +15,7 @@ public class CheckoutStepOnePageTests extends TestBase{
 
     private String emptyPostalCode = "";
     @Test
-    public void TestWrongInfoInputErrorValidation(){
+    public void TestWrongPostalCodeInputErrorValidation(){
         Log.info("Start Test Case: WrongInfoInputErrorValidation");
         LoginPage loginPage =  new LoginPage(driver);
         loginPage.Login(validUserName, validPassword);
@@ -25,7 +25,8 @@ public class CheckoutStepOnePageTests extends TestBase{
         CartPage cartPage = new CartPage(driver);
         cartPage.goToCheckout();
         CheckoutStepOnePage checkoutStepOnePage = new CheckoutStepOnePage(driver);
-        checkoutStepOnePage.enterInfoAndContinue(name, lastName, emptyPostalCode);
+        checkoutStepOnePage.enterInfo(name, lastName, emptyPostalCode);
+        checkoutStepOnePage.goToStepTwo();
         checkoutStepOnePage.ErrorMessageDisplayed();
     }
 }

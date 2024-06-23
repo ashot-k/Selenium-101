@@ -32,7 +32,7 @@ public class CheckoutStepTwoPageTests extends TestBase {
         CartPage cartPage = new CartPage(driver);
         cartPage.goToCheckout();
         CheckoutStepOnePage checkoutStepOnePage = new CheckoutStepOnePage(driver);
-        checkoutStepOnePage.enterInfoAndContinue(name, lastName, postalCode);
+        checkoutStepOnePage.enterInfo(name, lastName, postalCode);
         checkoutStepOnePage.goToStepTwo();
         CheckoutStepTwoPage checkoutStepTwoPage = new CheckoutStepTwoPage(driver);
         checkoutStepTwoPage.verifyTotalItems(expectedNumberOfItems);
@@ -53,7 +53,7 @@ public class CheckoutStepTwoPageTests extends TestBase {
         CartPage cartPage = new CartPage(driver);
         cartPage.goToCheckout();
         CheckoutStepOnePage checkoutStepOnePage = new CheckoutStepOnePage(driver);
-        checkoutStepOnePage.enterInfoAndContinue(name, lastName, postalCode);
+        checkoutStepOnePage.enterInfo(name, lastName, postalCode);
         checkoutStepOnePage.goToStepTwo();
         CheckoutStepTwoPage checkoutStepTwoPage = new CheckoutStepTwoPage(driver);
         checkoutStepTwoPage.verifyProductPrices(expectedPrice1, expectedPrice2);
@@ -74,7 +74,7 @@ public class CheckoutStepTwoPageTests extends TestBase {
         CartPage cartPage = new CartPage(driver);
         cartPage.goToCheckout();
         CheckoutStepOnePage checkoutStepOnePage = new CheckoutStepOnePage(driver);
-        checkoutStepOnePage.enterInfoAndContinue(name, lastName, postalCode);
+        checkoutStepOnePage.enterInfo(name, lastName, postalCode);
         checkoutStepOnePage.goToStepTwo();
         CheckoutStepTwoPage checkoutStepTwoPage = new CheckoutStepTwoPage(driver);
         checkoutStepTwoPage.verifyTotalPrice(expectedTotalPrice);

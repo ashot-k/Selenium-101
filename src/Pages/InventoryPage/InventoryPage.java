@@ -45,9 +45,8 @@ public class InventoryPage extends BasePage {
     @FindBy(xpath = "//select[@data-test='product-sort-container']")
     private WebElement sortOptionSelect;
 
-    @FindBy(xpath = "//shopping-cart-badge")
+    @FindBy(xpath = "//span[@data-test='shopping-cart-badge']")
     private WebElement cartBadge;
-
 
     public void changeSortOption(String option) {
         sortOptionSelect.click();

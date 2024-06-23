@@ -11,7 +11,7 @@ public class LoginPageTests extends TestBase{
     private String validPassword = "secret_sauce";
     private String invalidPassword = "invalidPassword";
 
-    @Test(priority = 1)
+    @Test
     public void TestSuccessfulLogin() {
         Log.info("Start Test Case: TestSuccessfulLogin");
         LoginPage loginPage = new LoginPage(driver);
@@ -20,7 +20,7 @@ public class LoginPageTests extends TestBase{
         loginPage.VerifyCurrentUrl(inventoryPage.inventoryPageUrl);
     }
 
-    @Test(priority = 2)
+    @Test
     public void TestFailedLogin() {
         String expectedErrorMessage = "Epic sadface: Username and password do not match any user in this service";
         Log.info("Start Test Case: TestFailedLogin");
@@ -31,7 +31,7 @@ public class LoginPageTests extends TestBase{
         loginPage.VerifyErrorMessageText(expectedErrorMessage);
     }
 
-    @Test(priority = 3)
+    @Test
     public void TestCorrectTitle() {
         String expectedTitle = "Swag Labs";
         Log.info("Start Test Case: TestCorrectTitle");
@@ -40,7 +40,7 @@ public class LoginPageTests extends TestBase{
         Assert.assertEquals(driver.getTitle(), expectedTitle);
     }
 
-    @Test(priority = 4)
+    @Test
     public void TestLogout() {
         Log.info("Start Test Case: TestLogout");
         LoginPage loginPage = new LoginPage(driver);
@@ -49,7 +49,7 @@ public class LoginPageTests extends TestBase{
         loginPage.VerifyCurrentUrl(loginPage.loginPageUrl);
     }
 
-    @Test(priority = 5)
+    @Test
     public void TestLogoutValidation() {
         String expectedErrorMessage = "Epic sadface: You can only access '/inventory.html' when you are logged in.";
         Log.info("Start Test Case: TestLogoutValidation");

@@ -20,13 +20,13 @@ public class CheckoutStepOnePageTests extends TestBase{
         LoginPage loginPage =  new LoginPage(driver);
         loginPage.Login(validUserName, validPassword);
         InventoryPage inventoryPage = new InventoryPage(driver);
-        inventoryPage.addBikeLightToCart();
-        inventoryPage.goToCartPage();
+        inventoryPage.AddBikeLightToCart();
+        inventoryPage.GoToCartPage();
         CartPage cartPage = new CartPage(driver);
-        cartPage.goToCheckout();
+        cartPage.GoToCheckout();
         CheckoutStepOnePage checkoutStepOnePage = new CheckoutStepOnePage(driver);
-        checkoutStepOnePage.enterInfo(name, lastName, emptyPostalCode);
-        checkoutStepOnePage.goToStepTwo();
+        checkoutStepOnePage.EnterInfo(name, lastName, emptyPostalCode);
+        checkoutStepOnePage.GoToStepTwo();
         checkoutStepOnePage.ErrorMessageDisplayed();
     }
 }

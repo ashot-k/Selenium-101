@@ -17,26 +17,25 @@ public class ItemPageTests extends TestBase{
         LoginPage loginPage =  new LoginPage(driver);
         loginPage.Login(validUserName, validPassword);
         InventoryPage inventoryPage = new InventoryPage(driver);
-        String img = inventoryPage.getBackPackImg();
-        inventoryPage.goToBackpackItemPage();
+        String img = inventoryPage.GetBackPackImg();
+        inventoryPage.GoToBackpackItemPage();
         ItemPage itemPage = new ItemPage(driver);
-        itemPage.checkIfItemPageImgMatchesInventoryPageImg(img);
+        itemPage.CheckIfItemPageImgMatchesInventoryPageImg(img);
     }
 
     @Test
     public void TestItemAdditionToCart(){
         String expectedItemName = "Test.allTheThings() T-Shirt (Red)";
         Log.info("Start Test Case: TestItemAdditionToCart");
-
         LoginPage loginPage =  new LoginPage(driver);
         loginPage.Login(validUserName, validPassword);
         InventoryPage inventoryPage = new InventoryPage(driver);
-        inventoryPage.goToTShirtPage();
+        inventoryPage.GoToShirtPage();
         ItemPage itemPage = new ItemPage(driver);
-        itemPage.addItemToCart();
-        itemPage.goToCartPage();
+        itemPage.AddItemToCart();
+        itemPage.GoToCartPage();
         CartPage cartPage = new CartPage(driver);
-        cartPage.validateItemInCart(expectedItemName);
+        cartPage.ValidateItemInCart(expectedItemName);
     }
     @Test
     public void TestItemRemovalFromCart(){
@@ -44,12 +43,12 @@ public class ItemPageTests extends TestBase{
         LoginPage loginPage =  new LoginPage(driver);
         loginPage.Login(validUserName, validPassword);
         InventoryPage inventoryPage = new InventoryPage(driver);
-        inventoryPage.goToTShirtPage();
+        inventoryPage.GoToShirtPage();
         ItemPage itemPage = new ItemPage(driver);
-        itemPage.addItemToCart();
-        itemPage.removeItemFromCart();
-        itemPage.goToCartPage();
+        itemPage.AddItemToCart();
+        itemPage.RemoveItemFromCart();
+        itemPage.GoToCartPage();
         CartPage cartPage = new CartPage(driver);
-        cartPage.validateEmptyCart();
+        cartPage.ValidateEmptyCart();
     }
 }

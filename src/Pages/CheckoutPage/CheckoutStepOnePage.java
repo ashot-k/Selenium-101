@@ -22,13 +22,13 @@ public class CheckoutStepOnePage extends BasePage {
     private WebElement continueButton;
     public String checkoutStepOneUrl = "https://www.saucedemo.com/checkout-step-one.html";
 
-    public void enterInfo(String name, String LastName, String postalCode){
+    public void EnterInfo(String name, String LastName, String postalCode){
         firstNameInput.sendKeys(name);
         lastNameInput.sendKeys(LastName);
         postalCodeInput.sendKeys(postalCode);
     }
 
-    public void goToStepTwo(){
+    public void GoToStepTwo(){
         continueButton.click();
     }
 

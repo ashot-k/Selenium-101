@@ -1,7 +1,6 @@
 package Pages.ItemPage;
 
 import Pages.BasePage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -22,18 +21,19 @@ public class ItemPage extends BasePage {
 
     @FindBy(xpath = "//a[@data-test='shopping-cart-link']")
     private WebElement shoppingCartLink;
-    public void checkIfItemPageImgMatchesInventoryPageImg(String inventoryImgSrc){
-        Assert.assertEquals(itemImg.getAttribute("src"), inventoryImgSrc);
+
+    public void CheckIfItemPageImgMatchesInventoryPageImg(String inventoryImgSrc){
+        Assert.assertEquals(itemImg.getAttribute("src"), inventoryImgSrc, "Item's Image from Inventory page does not match Image in Item Page");
     }
 
-    public void addItemToCart(){
+    public void AddItemToCart(){
         addToCartButton.click();
     }
-    public void removeItemFromCart(){
+    public void RemoveItemFromCart(){
         removeFromCartButton.click();
     }
 
-    public void goToCartPage() {
+    public void GoToCartPage() {
         shoppingCartLink.click();
     }
 

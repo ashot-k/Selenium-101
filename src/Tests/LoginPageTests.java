@@ -24,7 +24,6 @@ public class LoginPageTests extends TestBase{
     public void TestFailedLogin() {
         String expectedErrorMessage = "Epic sadface: Username and password do not match any user in this service";
         Log.info("Start Test Case: TestFailedLogin");
-
         LoginPage loginPage = new LoginPage(driver);
         loginPage.Login(validUserName, invalidPassword);
         loginPage.ErrorMessageDisplayed();
@@ -35,7 +34,6 @@ public class LoginPageTests extends TestBase{
     public void TestCorrectTitle() {
         String expectedTitle = "Swag Labs";
         Log.info("Start Test Case: TestCorrectTitle");
-
         driver.get("https://saucedemo.com");
         Assert.assertEquals(driver.getTitle(), expectedTitle);
     }
@@ -45,7 +43,7 @@ public class LoginPageTests extends TestBase{
         Log.info("Start Test Case: TestLogout");
         LoginPage loginPage = new LoginPage(driver);
         loginPage.Login(validUserName, validPassword);
-        loginPage.logout();
+        loginPage.Logout();
         loginPage.VerifyCurrentUrl(loginPage.loginPageUrl);
     }
 
@@ -53,10 +51,9 @@ public class LoginPageTests extends TestBase{
     public void TestLogoutValidation() {
         String expectedErrorMessage = "Epic sadface: You can only access '/inventory.html' when you are logged in.";
         Log.info("Start Test Case: TestLogoutValidation");
-
         LoginPage loginPage = new LoginPage(driver);
         loginPage.Login(validUserName, validPassword);
-        loginPage.logout();
+        loginPage.Logout();
         driver.navigate().back();
         loginPage.VerifyCurrentUrl(loginPage.loginPageUrl);
         loginPage.ErrorMessageDisplayed();

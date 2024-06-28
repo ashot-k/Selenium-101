@@ -48,25 +48,13 @@ public class InventoryPage extends BasePage {
     @FindBy(xpath = "//span[@data-test='shopping-cart-badge']")
     private WebElement cartBadge;
 
-    public void changeSortOption(String option) {
+    public void ChangeSortOption(String option) {
         sortOptionSelect.click();
         WebElement optionElement = sortOptionSelect.findElement(By.xpath(".//option[@value='" + option + "']"));
         optionElement.click();
     }
 
-    public void ascendingNameOrderCheck() {
-        WebElement prevItem = null;
-        for (WebElement item : items) {
-            if (prevItem != null) {
-                String currentText = item.findElement(By.xpath(".//div[@data-test='inventory-item-name']")).getText();
-                String prevText = prevItem.findElement(By.xpath(".//div[@data-test='inventory-item-name']")).getText();
-                Assert.assertTrue(currentText.compareToIgnoreCase(prevText) >= 0, "Names are not sorted");
-            }
-            prevItem = item;
-        }
-    }
-
-    public void descendingNameOrderCheck() {
+    public void DescendingNameOrderCheck() {
         WebElement prevItem = null;
         for (WebElement item : items) {
             if (prevItem != null) {
@@ -78,19 +66,7 @@ public class InventoryPage extends BasePage {
         }
     }
 
-    public void descendingPriceOrderCheck(){
-        WebElement prevItem = null;
-        for (WebElement item : items) {
-            if (prevItem != null) {
-                BigDecimal currentPrice = new BigDecimal(item.findElement(By.xpath(".//div[@data-test='inventory-item-price']")).getText().substring(1));
-                BigDecimal prevPrice = new BigDecimal(prevItem.findElement(By.xpath(".//div[@data-test='inventory-item-price']")).getText().substring(1));
-                Assert.assertTrue(currentPrice.compareTo(prevPrice) < 0 || currentPrice.equals(prevPrice), "Prices are not sorted");
-            }
-            prevItem = item;
-        }
-    }
-
-    public void ascendingPriceOrderCheck(){
+    public void AscendingPriceOrderCheck(){
         WebElement prevItem = null;
         for (WebElement item : items) {
             if (prevItem != null) {
@@ -102,35 +78,35 @@ public class InventoryPage extends BasePage {
         }
     }
 
-    public void cartBadgeNumberCheck(int expectedNumber){
+    public void CartBadgeNumberCheck(int expectedNumber){
        int cartBadgeNumber =  Integer.parseInt(cartBadge.getText());
         Assert.assertEquals(cartBadgeNumber, expectedNumber);
     }
 
-    public void addBikeLightToCart() {
+    public void AddBikeLightToCart() {
         addToCartBikeLight.click();
     }
 
-    public void addBackpackToCart() {
+    public void AddBackpackToCart() {
         addToCartBackPack.click();
     }
 
-    public void addFleeceJacketToCart() {
+    public void AddFleeceJacketToCart() {
         addToCartFleeceJacket.click();
     }
 
-    public void goToCartPage() {
+    public void GoToCartPage() {
         shoppingCartLink.click();
     }
 
-    public void goToBackpackItemPage() {
+    public void GoToBackpackItemPage() {
         backPackLink.click();
     }
-    public void goToTShirtPage(){
+    public void GoToShirtPage(){
         tshirtLink.click();
     }
 
-    public String getBackPackImg() {
+    public String GetBackPackImg() {
         return backPackImg.getAttribute("src");
     }
 

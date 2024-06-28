@@ -23,7 +23,7 @@ public class LoginPage extends BasePage {
     private WebElement errorMessage;
     @FindBy(id = "react-burger-menu-btn")
     private WebElement sideBar;
-    @FindBy(id= "logout_sidebar_link")
+    @FindBy(id = "logout_sidebar_link")
     private WebElement logoutBtn;
 
     public void Login(String userName, String password) {
@@ -34,6 +34,11 @@ public class LoginPage extends BasePage {
         loginButton.click();
     }
 
+    public void Logout() {
+        sideBar.click();
+        logoutBtn.click();
+    }
+
     public void ErrorMessageDisplayed() {
         Assert.assertTrue(errorMessage.isDisplayed(), "Error message is not displayed on the page.");
         VerifyCurrentUrl(loginPageUrl);
@@ -42,10 +47,5 @@ public class LoginPage extends BasePage {
     public void VerifyErrorMessageText(String expectedErrorMessage) {
         String actualErrorMessage = errorMessage.getText();
         Assert.assertEquals(actualErrorMessage, expectedErrorMessage, "Error message text does not match.");
-    }
-
-    public void logout() {
-        sideBar.click();
-        logoutBtn.click();
     }
 }

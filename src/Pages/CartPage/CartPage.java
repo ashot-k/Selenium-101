@@ -1,7 +1,6 @@
 package Pages.CartPage;
 
 import Pages.BasePage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,19 +19,19 @@ public class CartPage extends BasePage {
     public WebElement checkoutButton;
 
     @FindBy(xpath = "//div[@data-test='inventory-item-name']")
-    public WebElement tshirtName;
+    public WebElement shirtName;
 
     @FindBy(xpath = "//div[@data-test='inventory-item']")
     public List<WebElement> cartItems;
 
-    public void goToCheckout(){
+    public void GoToCheckout(){
         checkoutButton.click();
     }
 
-    public void validateItemInCart(String expectedItemName){
-        Assert.assertEquals(tshirtName.getText(), expectedItemName);
+    public void ValidateItemInCart(String expectedItemName){
+        Assert.assertEquals(shirtName.getText(), expectedItemName);
     }
-    public void validateEmptyCart(){
+    public void ValidateEmptyCart(){
         Assert.assertTrue(cartItems.isEmpty());
     }
 }

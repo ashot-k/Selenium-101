@@ -12,7 +12,7 @@ public class ItemPageTests extends TestBase{
     private String validPassword = "secret_sauce";
 
     @Test
-    public void TestInventoryPageItemImageMatchesItemPageImage(){
+    public void TestInventoryPageItemImgMatchesItemPageImg(){
         Log.info("Start Test Case: TestInventoryPageItemImageMatchesItemPageImage");
         LoginPage loginPage =  new LoginPage(driver);
         loginPage.Login(validUserName, validPassword);

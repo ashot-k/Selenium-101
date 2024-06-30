@@ -54,7 +54,7 @@ public class InventoryPage extends BasePage {
         optionElement.click();
     }
 
-    public void DescendingNameOrderCheck() {
+    public void DescendingNameSortingCheck() {
         WebElement prevItem = null;
         for (WebElement item : items) {
             if (prevItem != null) {
@@ -66,7 +66,7 @@ public class InventoryPage extends BasePage {
         }
     }
 
-    public void AscendingPriceOrderCheck(){
+    public void AscendingPriceSortingCheck(){
         WebElement prevItem = null;
         for (WebElement item : items) {
             if (prevItem != null) {

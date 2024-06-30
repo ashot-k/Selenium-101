@@ -14,23 +14,23 @@ public class InventoryPageTests extends TestBase {
 
 
     @Test
-    public void TestDescendingNameOrderValidation(){
+    public void TestDescendingNameSortingValidation(){
         Log.info("Start Test Case: TestDescSortingOfItems");
         LoginPage loginPage = new LoginPage(driver);
         loginPage.Login(validUserName, validPassword);
         InventoryPage inventoryPage = new InventoryPage(driver);
         inventoryPage.ChangeSortOption(descNameOrderOption);
-        inventoryPage.DescendingNameOrderCheck();
+        inventoryPage.DescendingNameSortingCheck();
     }
 
     @Test
-    public void TestAscendingPriceOrderValidation(){
+    public void TestAscendingPriceSortingValidation(){
         Log.info("Start Test Case: TestAscendingPriceOrderValidation");
         LoginPage loginPage = new LoginPage(driver);
         loginPage.Login(validUserName, validPassword);
         InventoryPage inventoryPage = new InventoryPage(driver);
         inventoryPage.ChangeSortOption(ascPriceOrderOption);
-        inventoryPage.AscendingPriceOrderCheck();
+        inventoryPage.AscendingPriceSortingCheck();
     }
 
     @Test

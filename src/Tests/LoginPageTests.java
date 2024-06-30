@@ -17,7 +17,7 @@ public class LoginPageTests extends TestBase{
         LoginPage loginPage = new LoginPage(driver);
         loginPage.Login(validUserName, validPassword);
         InventoryPage inventoryPage = new InventoryPage(driver);
-        loginPage.VerifyCurrentUrl(inventoryPage.inventoryPageUrl);
+        inventoryPage.VerifyCurrentUrl(inventoryPage.inventoryPageUrl);
     }
 
     @Test

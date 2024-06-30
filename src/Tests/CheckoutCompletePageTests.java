@@ -20,11 +20,9 @@ public class CheckoutCompletePageTests extends TestBase{
     @Test
     public void TestCompleteMessage(){
         Log.info("Start Test Case: TestCompleteMessage");
-        System.out.println();
         LoginPage loginPage = new LoginPage(driver);
         loginPage.Login(validUserName, validPassword);
         InventoryPage inventoryPage = new InventoryPage(driver);
-        inventoryPage.AddBackpackToCart();
         inventoryPage.AddFleeceJacketToCart();
         inventoryPage.AddBikeLightToCart();
         inventoryPage.GoToCartPage();

@@ -36,5 +36,8 @@ public class CheckoutStepOnePage extends BasePage {
         Assert.assertTrue(errorMessage.isDisplayed(), "Error message is not displayed on the page.");
         VerifyCurrentUrl(checkoutStepOneUrl);
     }
+    public void VerifyErrorMessage(String expectedMsg){
+        Assert.assertEquals(errorMessage.getText(), expectedMsg);
+    }
 
 }

@@ -21,6 +21,8 @@ public class CheckoutStepTwoPage extends BasePage {
     @FindBy(className = "cart_item")
     public List<WebElement> items;
 
+    @FindBy(xpath= "//div[@data-test='inventory-item-price']")
+    public List<WebElement> prices;
     @FindBy(xpath = "//div[@data-test='total-label']")
     private WebElement totalPrice;
 
@@ -54,8 +56,8 @@ public class CheckoutStepTwoPage extends BasePage {
     }
 
     public void VerifyProductPrices(BigDecimal expected1, BigDecimal expected2){
-        BigDecimal price1 = new BigDecimal(items.get(0).findElement(By.xpath(".//div[@data-test='inventory-item-price']")).getText().substring(1));
-        BigDecimal price2 = new BigDecimal(items.get(1).findElement(By.xpath(".//div[@data-test='inventory-item-price']")).getText().substring(1));
+        BigDecimal price1 = new BigDecimal(prices.get(0).getText().substring(1));
+        BigDecimal price2 = new BigDecimal(prices.get(1).getText().substring(1));
 
         Assert.assertEquals(price1, expected1, "Price of first item is incorrect.");
         Assert.assertEquals(price2, expected2, "Price of second item is incorrect.");

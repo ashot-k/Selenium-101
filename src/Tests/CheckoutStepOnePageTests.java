@@ -17,6 +17,7 @@ public class CheckoutStepOnePageTests extends TestBase{
     @Test
     public void TestWrongPostalCodeInputErrorValidation(){
         Log.info("Start Test Case: WrongInfoInputErrorValidation");
+        String expectedErrorMsg = "Error: Postal Code is required";
         LoginPage loginPage =  new LoginPage(driver);
         loginPage.Login(validUserName, validPassword);
         InventoryPage inventoryPage = new InventoryPage(driver);
@@ -28,5 +29,6 @@ public class CheckoutStepOnePageTests extends TestBase{
         checkoutStepOnePage.EnterInfo(name, lastName, emptyPostalCode);
         checkoutStepOnePage.GoToStepTwo();
         checkoutStepOnePage.ErrorMessageDisplayed();
+        checkoutStepOnePage.VerifyErrorMessage(expectedErrorMsg);
     }
 }

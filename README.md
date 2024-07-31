@@ -24,3 +24,6 @@ Select the testng, and it will be installed.
 Go to Run Tab and click run LoginPageTests. 
 If you want only one test go to a test e.g, TestSuccessfulLogin
 Right click on the name and click run TestSuccessfulLogin.
+
+## Test Manual
+More info about each test case can be found in the test_manual pdf file.

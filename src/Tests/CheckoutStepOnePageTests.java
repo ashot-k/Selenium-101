@@ -31,4 +31,16 @@ public class CheckoutStepOnePageTests extends TestBase{
         checkoutStepOnePage.ErrorMessageDisplayed();
         checkoutStepOnePage.VerifyErrorMessage(expectedErrorMsg);
     }
+
+    @Test
+    public void TestCannotCheckoutWithoutItems(){
+        Log.info("Start Test Case: CannotCheckoutWithoutItems");
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.Login(validUserName,  validPassword);
+        InventoryPage inventoryPage = new InventoryPage(driver);
+        inventoryPage.GoToCartPage();
+        CartPage cartPage = new CartPage(driver);
+        cartPage.GoToCheckout();
+        cartPage.VerifyCurrentUrl(cartPage.cartPageUrl);
+    }
 }

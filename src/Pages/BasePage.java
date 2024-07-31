@@ -1,6 +1,5 @@
 package Pages;
 
-import Tests.TestBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;

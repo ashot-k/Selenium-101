@@ -12,7 +12,6 @@ public class InventoryPageTests extends TestBase {
     private String descNameOrderOption = "za";
     private String ascPriceOrderOption = "lohi";
 
-
     @Test
     public void TestDescendingNameSortingValidation(){
         Log.info("Start Test Case: TestDescSortingOfItems");
@@ -43,7 +42,7 @@ public class InventoryPageTests extends TestBase {
         inventoryPage.AddBackpackToCart();
         inventoryPage.AddFleeceJacketToCart();
         inventoryPage.AddBikeLightToCart();
-        inventoryPage.CartBadgeNumberCheck(3);
+        inventoryPage.CartBadgeNumberCheck(expectedNumber);
     }
 
 }
